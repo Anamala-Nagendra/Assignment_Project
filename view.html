@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruitment Solution App</title>
+  <link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+  <script>
+    // Sample data for candidates
+    const candidates = [
+      { name: 'John Doe', location: 'New York', role: 'Software Engineer' },
+      { name: 'Aravind', location: 'Banglore', role: 'Product Engineer' },
+      { name: 'Bharadvaj', location: 'Jammu', role: 'Software Developer' },
+      { name: 'Kalyan krishna', location: 'Madhya Pradesh', role: 'Pschologist' },
+      { name: 'Ravindhra ', location: 'Mumbai', role: 'Devops manager' },
+      { name: 'Nichole watson', location: 'Washington', role: 'Engineer' },
+      { name: 'Jane Smith', location: 'Los Angeles', role: 'UI/UX Designer' },
+      { name: 'Alex Johnson', location: 'Chicago', role: 'Data Analyst' },
+      { name: 'Sarah Thompson', location: 'New York', role: 'Project Manager' },
+      { name: 'Mike Wilson', location: 'Chicago', role: 'Artificial Engineer' }
+    ];
+  
+    // Function to perform search
+    function search() {
+      const searchInput = document.getElementById('searchInput');
+      console.log(searchInput);
+      const searchText = searchInput.value.toLowerCase();
+  
+      const results = document.getElementById('candidateList');
+      results.innerHTML = ''; // Clear previous results
+  
+      // Filter candidates based on search text
+      const candidateMatches = candidates.filter(candidate =>
+        candidate.name.toLowerCase().includes(searchText) ||
+        candidate.role.toLowerCase().includes(searchText) ||
+        candidate.location.toLowerCase().includes(searchText)
+      );
+  
+      // Display candidate matches
+      candidateMatches.forEach(candidate => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${candidate.name} - ${candidate.role}`;
+        listItem.addEventListener('click', function(){
+          searchInput.value=listItem.textContent;
+        });
+        results.appendChild(listItem);
+
+      });
+
+
+  
+      if (candidateMatches.length === 0) {
+        const noResultsItem = document.createElement('li');
+        noResultsItem.textContent = 'No results found.';
+        results.appendChild(noResultsItem);
+      }
+    }
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+ 
+  var searchUser = document.getElementById('searchInput');
+  searchUser.addEventListener('input',search);
+});
+
+
+document.addEventListener('click', function(event) {
+  var searchBar = document.getElementById('searchInput');
+  var searchPrediction = document.getElementById('candidateList');
+  
+  if (event.target !== searchBar) {
+    searchPrediction.classList.add('hidden');
+  } else {
+    searchPrediction.classList.remove('hidden');
+  }
+});
+
+   
+   </script>
+    <!-- Navbar -->
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo" style="font-size: 40px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 300; text-shadow: 0px 0px 4px black;">Recruitment</h2>
+            </div>
+
+       
+            <ul class="nav" >
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">SERVICE</a></li>
+                <li><a href="#">DESIGN</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+      
+        <button id="login" style="width: 90px; height: 40px; font-size: 15px;" onclick="location.href='/login.html'">Login</button>
+        
+    </div> 
+    </div>
+
+
+    <!-- Search Bar -->
+   
+    <div class="container-search">
+        <div class="search search1" style="box-shadow: 0px 0px 2px black; width: 60%; height: 45px;">
+            <input type="text" id="searchInput" placeholder="  Search " >
+            <ul id="candidateList"></ul>
+        </div>
+       
+    
+        <div class="search-btn" style="text-align: center; margin-bottom:2px ;">
+            <button style="font-size: 12px; top: 2px; height: 45px; width: 90px;">search</button>
+        </div>
+    </div>
+    
+    <!-- Homepage -->
+  <div class="homepage">
+   <div class="content" style="margin-top: 90px;">
+    <h1 style="font-size: 50px;">Welcome to our Online Recruitment Solution</h1>
+    <p style="font-size: 35px;">Efficiently find the best talent for your company.</p>
+    <!-- <p style="font-size: 25px;">Key Features:</p> -->
+    <ul>
+      <li>Streamlined hiring process</li>
+      <li>Advanced candidate search</li>
+      <li>Customizable evaluation tools</li>
+    </ul>
+  </div>
+
+  <div class="register-page" style="margin-top: 25px;">
+    <h2 style="text-shadow: 0px 0px 4px black; margin: 0px auto; margin-top: 3px;">Regiser Here</h2>
+    <form style="margin-top:-15px; row-gap: 6px;">
+      <input type="text" placeholder="Username" required>
+      <input type="text" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <input type="password" placeholder="Confirm Password" required>
+      <button id="register">Register</button>
+      <p style="margin-top: -20px;">Already have an account? </p>
+      <button  id="loginUser" onclick="location.href='login.html'" style="margin-top: -9px;">Login</button>
+    </form>
+   
+
+  </div>
+  </div>
+    
+
+
+
+
+
+</body>
+</html>
